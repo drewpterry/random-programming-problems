@@ -28,19 +28,14 @@ class CoinDenominator:
         memo_key = str((amount_left, current_index))
         if memo_key in self.memo:
             return memo[memo_key]
-        # base cases:
-        # we hit the amount spot on. yes!
         if amount_left == 0: return 1
 
-        # we overshot the amount left (used too many coins)
         if amount_left < 0: return 0
 
-        # we're out of denominations
         if current_index == len(denominations): return 0
 
         print "checking ways to make %i with %s" % (amount_left, denominations[current_index:])
 
-        # choose a current coin
         current_coin = denominations[current_index]
 
         # see how many possibilities we can get
@@ -56,11 +51,7 @@ class CoinDenominator:
 class Test(unittest.TestCase):
 
     def test_cp(self):
-        # self.assertEqual(3,CoinDenominator().change_possibilities_top_down(4, [1,2]))
-        # self.assertEqual(3,CoinDenominator().change_possibilities_bottom_down(4, [1,2]))
         self.assertEqual(3,CoinDenominator().change_possibilities_bottom_down(5, [2,3,5]))
 
 if __name__ == "__main__":
     unittest.main()
-# coin_output(5, [1])
-# CoinDenominator().change_possibilities_top_down(4, [1,2])
