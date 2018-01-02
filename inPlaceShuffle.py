@@ -11,7 +11,6 @@ def shuffle(values):
     for i in range(0, ceiling):
         rand_val = get_random(i, ceiling)
         values[i], values[rand_val] = values[rand_val], values[i]
-
     return values
 
 
